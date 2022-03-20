@@ -32,6 +32,26 @@ class SignUpFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        binding.button.isEnabled = false
+
+        viewModel.login.observe(viewLifecycleOwner){
+            binding.button.isEnabled = !hasEmptyFields()
+        }
+
+        viewModel.password.observe(viewLifecycleOwner){
+            binding.button.isEnabled = !hasEmptyFields()
+        }
+
+        viewModel.confirmPassword.observe(viewLifecycleOwner){
+            binding.button.isEnabled = !hasEmptyFields()
+        }
+
         return binding.root
+    }
+
+    private fun hasEmptyFields() : Boolean{
+        return viewModel.login.value.isNullOrBlank()
+                || viewModel.password.value.isNullOrBlank()
+                || viewModel.confirmPassword.value.isNullOrBlank()
     }
 }

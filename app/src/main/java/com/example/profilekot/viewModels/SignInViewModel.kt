@@ -1,17 +1,19 @@
 package com.example.profilekot.viewModels
 
+import android.app.AlertDialog
 import android.view.View
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
+import com.example.profilekot.App
+import com.example.profilekot.MainActivity
 import com.example.profilekot.R
+import com.example.profilekot.services.autorization.AutorizationService
+import kotlinx.coroutines.launch
 
 class SignInViewModel : ViewModel()
 {
-    private val _isEnabled = MutableLiveData<Boolean>(true)
-    val isEnabled : LiveData<Boolean> = _isEnabled
-
     private val _login = MutableLiveData<String>()
     val login: MutableLiveData<String> = _login
 
@@ -23,6 +25,20 @@ class SignInViewModel : ViewModel()
     }
 
     fun onSignInClick(view: View){
-        //view.findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
+        viewModelScope.launch {
+            var isAutorized = AutorizationService.autorize(login.value!!, password.value!!)
+            if (isAutorized) {
+
+            } else {
+                val builder = AlertDialog.Builder(MainActivity.instance)
+                builder.setTitle("Error")
+                    .setMessage("Wrong login or password")
+                    .setPositiveButton("OK") { dialog, which ->
+                        dialog.cancel()
+                    }.create()
+
+                builder.show()
+            }
+        }
     }
 }

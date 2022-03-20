@@ -1,5 +1,6 @@
 package com.example.profilekot
 
+import android.app.Activity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -48,5 +49,10 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    companion object {
+        private var _instance: Activity? = null
+        var instance: Activity? = _instance
     }
 }
