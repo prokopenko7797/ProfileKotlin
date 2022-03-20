@@ -69,12 +69,12 @@ class SignUpViewModel : ViewModel()
     }
 
     private fun hasValidLogin() : Boolean{
-        val loginRegex = Regex("^[A-Za-z][A-Za-z\\d]{3,15}\$")
+        val loginRegex = Regex("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,64}")
         return loginRegex.containsMatchIn(login.value.toString())
     }
 
     private fun hasValidPassword() : Boolean{
-        val passRegex = Regex("^[A-Z](?=.*[a-z])(?=.*\\d)[a-zA-Z\\d]{7,15}\$")
+        val passRegex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[0-9])[A-Za-z0-9\\\\d\$@\$!%*?&#]{4,16}")
         return passRegex.containsMatchIn(password.value.toString())
     }
 
