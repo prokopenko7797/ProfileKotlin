@@ -6,10 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
-import com.example.profilekot.App
 import com.example.profilekot.MainActivity
 import com.example.profilekot.R
-import com.example.profilekot.services.autorization.AutorizationService
+import com.example.profilekot.services.autorization.AuthorizationService
 import kotlinx.coroutines.launch
 
 class SignInViewModel : ViewModel()
@@ -26,10 +25,13 @@ class SignInViewModel : ViewModel()
 
     fun onSignInClick(view: View){
         viewModelScope.launch {
-            var isAutorized = AutorizationService.autorize(login.value!!, password.value!!)
-            if (isAutorized) {
-
-            } else {
+            var isAutorized = AuthorizationService.autorize(login.value!!, password.value!!)
+            if (isAutorized)
+            {
+                
+            }
+            else
+            {
                 val builder = AlertDialog.Builder(MainActivity.instance)
                 builder.setTitle("Error")
                     .setMessage("Wrong login or password")

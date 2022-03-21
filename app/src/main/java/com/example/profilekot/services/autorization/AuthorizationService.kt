@@ -6,8 +6,8 @@ import com.example.profilekot.Constants
 import com.example.profilekot.models.user.UserModel
 import com.example.profilekot.services.repository.RepositoryService
 
-object AutorizationService {
-    private val _database: RepositoryService = RepositoryService.getInstance(App.getContext())
+object AuthorizationService {
+    private val _repositoryService: RepositoryService = RepositoryService.getInstance(App.getContext())
     private val _preferences = App.getContext().getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE)
 
     val isAuthorized = _preferences.getInt(Constants.USER_ID, 0) != 0
@@ -15,12 +15,12 @@ object AutorizationService {
     suspend fun createUser(login:String, password:String): Boolean {
         var result = false
 
-        var user = _database.userDao.getByLogin(login)
+        var user = _repositoryService.userDao.getByLogin(login)
 
-        if (user != null)
+        if (user == null)
         {
             var newUser = UserModel(login = login, password = password)
-            _database.userDao.insert(newUser)
+            _repositoryService.userDao.insert(newUser)
             result = true
         }
 
@@ -30,7 +30,7 @@ object AutorizationService {
     suspend fun autorize(login:String, password:String): Boolean {
         var result = false
 
-        var user = _database.userDao.getUser(login, password)
+        var user = _repositoryService.userDao.getUser(login, password)
 
         if (user != null)
         {

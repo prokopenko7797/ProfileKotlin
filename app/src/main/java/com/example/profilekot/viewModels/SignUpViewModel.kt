@@ -10,7 +10,7 @@ import com.example.profilekot.App
 import com.example.profilekot.Constants
 import com.example.profilekot.MainActivity
 import com.example.profilekot.R
-import com.example.profilekot.services.autorization.AutorizationService
+import com.example.profilekot.services.autorization.AuthorizationService
 import kotlinx.coroutines.launch
 
 class SignUpViewModel : ViewModel()
@@ -32,7 +32,7 @@ class SignUpViewModel : ViewModel()
                 {
                     if (password != confirmPassword) {
                         var isUserCreated =
-                            AutorizationService.createUser(login.value!!, password.value!!)
+                            AuthorizationService.createUser(login.value.toString(), password.value.toString())
 
                         if (isUserCreated) {
                             view.findNavController().previousBackStackEntry?.savedStateHandle?.set(

@@ -15,7 +15,6 @@ import com.example.profilekot.models.user.UserModel
     exportSchema = false
 )
 abstract class RepositoryService: RoomDatabase() {
-
     abstract val userDao: UserDao
     abstract val profileDao: ProfileDao
 

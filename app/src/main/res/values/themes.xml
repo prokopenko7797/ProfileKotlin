@@ -22,4 +22,17 @@
     <style name="Theme.ProfileKot.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ProfileKot.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/orange</item>
+    </style>
+    <style name="FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:layout_height">90dp</item>
+        <item name="android:layout_width">90dp</item>
+        <item name="fabCustomSize">90dp</item>
+        <item name="borderWidth">8dp</item>
+        <item name="backgroundTint">@color/darkGray</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="tint">@color/white</item>
+    </style>
 </resources>

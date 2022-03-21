@@ -57,9 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            android:backgroundTint="#FF9800"
             android:text="@string/sign_up"
-            android:textColor="@color/black"
             android:onClick="@{(view) -> viewModel.onSignUpClick(view)}"/>
 
     </LinearLayout>
