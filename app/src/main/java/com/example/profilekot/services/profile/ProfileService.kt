@@ -32,4 +32,7 @@ object ProfileService {
         return _repositoryService.profileDao.getAll(userId)
     }
 
+    suspend fun getProfileById(id: Int) : ProfileModel{
+        return _repositoryService.profileDao.getProfileById(id)
+    }
 }

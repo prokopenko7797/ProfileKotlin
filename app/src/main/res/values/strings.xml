@@ -25,8 +25,8 @@
     <string name="PasswordsFieldsNotMatches">Password and confirm password fields are not matches!</string>
     <string name="LoginIsInvalid">Login be at least 4 and no more than 16 and first symbol must not be a digit!</string>
     <string name="PasswordIsInvalid">Password be at least 8 and no more than 16 and must contain at least one uppercase letter, one lowercase letter and one number!</string>
-    <string name="Edit">Редактировать</string>
-    <string name="Delete">Удалить</string>
+    <string name="Edit">Edit</string>
+    <string name="Delete">Delete</string>
     <string name="AddPhoto">Add photo</string>
     <string name="Gallery">Gallery</string>
     <string name="Camera">Camera</string>
@@ -44,4 +44,6 @@
     <string name="UsersSignIn">Users SignIn</string>
     <string name="UserSignUp">Users SignUp</string>
     <string name="MainList">Main List</string>
-    </resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

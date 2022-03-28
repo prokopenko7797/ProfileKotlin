@@ -28,7 +28,7 @@ class SignInViewModel : ViewModel()
             var isAutorized = AuthorizationService.autorize(login.value!!, password.value!!)
             if (isAutorized)
             {
-                
+                view.findNavController().navigate(R.id.action_signInFragment_to_mainListFragment)
             }
             else
             {

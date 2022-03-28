@@ -27,5 +27,31 @@
         android:name="com.example.profilekot.views.MainListFragment"
         android:label="@string/MainList"
         tools:layout="@layout/main_list_fragment">
+        <action
+            android:id="@+id/action_mainListFragment_to_addEditFragment"
+            app:destination="@id/addEditFragment" >
+            <argument
+                android:name="name"
+                android:defaultValue='""' />
+            <argument
+                android:name="profileId"
+                android:defaultValue="0" />
+        </action>
+        <action
+            android:id="@+id/action_mainListFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditFragment"
+        android:name="com.example.profilekot.views.AddEditFragment"
+        android:label="{name}"
+        tools:layout="@layout/add_edit_fragment">
+        <argument
+            android:name="id"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 </navigation>
