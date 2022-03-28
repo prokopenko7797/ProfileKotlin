@@ -10,7 +10,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.navigation.NavController
 import com.example.profilekot.databinding.ActivityMainBinding
+import com.example.profilekot.services.autorization.AuthorizationService
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        prepareRootNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -50,6 +54,19 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    private fun prepareRootNavController(navController: NavController) {
+        val graph = navController.navInflater.inflate(R.navigation.nav_graph)
+
+        val fragmentId = if (AuthorizationService.isAuthorized) {
+            R.id.mainListFragment
+        } else {
+            R.id.signInFragment
+        }
+
+        graph.startDestination = fragmentId
+        navController.graph = graph
     }
 
     companion object {

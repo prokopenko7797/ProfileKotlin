@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class AddEditViewModel : ViewModel() {
-    lateinit var profile: ProfileModel
+    private lateinit var _profile: ProfileModel
 
     private val _image = MutableLiveData<String>()
     val image: MutableLiveData<String> = _image
@@ -31,11 +31,11 @@ class AddEditViewModel : ViewModel() {
 
     fun initializeProfileById(id: Int){
         viewModelScope.launch {
-            profile = ProfileService.getProfileById(id)
-            image.value = profile.image!!
-            nickname.value = profile.nickname
-            name.value = profile.name
-            description.value = profile.description
+            _profile = ProfileService.getProfileById(id)
+            image.value = _profile.image
+            nickname.value = _profile.nickname
+            name.value = _profile.name
+            description.value = _profile.description
         }
     }
 
@@ -43,15 +43,15 @@ class AddEditViewModel : ViewModel() {
         var result = false
 
         if (!hasEmptyFields()){
-            if (!this::profile.isInitialized){
-                profile = createProfile()
+            if (!this::_profile.isInitialized){
+                _profile = createProfile()
             }
             else{
                 editProfile()
             }
 
             viewModelScope.launch {
-                ProfileService.saveProfile(profile)
+                ProfileService.saveProfile(_profile)
             }
 
             result = true
@@ -79,10 +79,10 @@ class AddEditViewModel : ViewModel() {
     }
 
     private fun editProfile() {
-        profile.image = image.value
-        profile.nickname = nickname.value.toString()
-        profile.name = name.value.toString()
-        profile.description = description.value.toString()
+        _profile.image = image.value
+        _profile.nickname = nickname.value.toString()
+        _profile.name = name.value.toString()
+        _profile.description = description.value.toString()
     }
 
     private fun showErrorAlert(message: String){

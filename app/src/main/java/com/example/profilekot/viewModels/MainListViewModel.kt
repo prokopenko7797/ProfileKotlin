@@ -26,7 +26,7 @@ class MainListViewModel : ViewModel() {
 
     fun onAddProfile(view: View){
         view.findNavController().navigate(
-            MainListFragmentDirections.actionMainListFragmentToAddEditFragment(App.getContext().getString(R.string.AddProfile), 0))
+            MainListFragmentDirections.actionMainListFragmentToAddEditFragment(0, App.getContext().getString(R.string.AddProfile)))
     }
 
     fun onDeleteProfile(profile: ProfileModel){

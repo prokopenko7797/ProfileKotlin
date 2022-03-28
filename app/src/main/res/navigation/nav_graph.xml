@@ -15,7 +15,8 @@
             app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/action_signInFragment_to_mainListFragment"
-            app:destination="@id/mainListFragment" />
+            app:destination="@id/mainListFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -30,16 +31,11 @@
         <action
             android:id="@+id/action_mainListFragment_to_addEditFragment"
             app:destination="@id/addEditFragment" >
-            <argument
-                android:name="name"
-                android:defaultValue='""' />
-            <argument
-                android:name="profileId"
-                android:defaultValue="0" />
         </action>
         <action
             android:id="@+id/action_mainListFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/addEditFragment"

@@ -33,6 +33,6 @@ object ProfileService {
     }
 
     suspend fun getProfileById(id: Int) : ProfileModel{
-        return _repositoryService.profileDao.getProfileById(id)
+        return _repositoryService.profileDao.getById(id)
     }
 }

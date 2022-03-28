@@ -13,9 +13,9 @@ interface ProfileDao {
     @Delete
     suspend fun delete(profile: ProfileModel)
 
-    @Query("SELECT * from profile WHERE userId = :userId")
+    @Query("SELECT * FROM profile WHERE userId = :userId")
     suspend fun getAll(userId: Int) : List<ProfileModel>
 
-    @Query("SELECT * from profile WHERE id = :id")
-    suspend fun getProfileById(id: Int) : ProfileModel
+    @Query("SELECT * FROM profile WHERE id = :id")
+    suspend fun getById(id: Int) : ProfileModel
 }
