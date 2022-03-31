@@ -23,6 +23,12 @@ import com.example.profilekot.databinding.MainListFragmentBinding
 import com.example.profilekot.models.profile.ProfileModel
 import com.example.profilekot.services.image.ImageService
 import com.example.profilekot.viewModels.AddEditViewModel
+import androidx.appcompat.app.AppCompatActivity
+
+import android.R.string.no
+
+
+
 
 class MainListFragment : Fragment() {
     private lateinit var binding: MainListFragmentBinding
@@ -32,6 +38,8 @@ class MainListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.main_list_fragment,
